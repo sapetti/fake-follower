@@ -4,7 +4,8 @@
   "description": "App to click links given every time it is requested to",
   "main": "src/server/index.js",
   "scripts": {
-    "build": "webpack --mode production",
+    "build": "npm i",
+    "build1": "webpack --mode production",
     "start": "node src/server/index.js",
     "start1": "npm run build && node src/server/index.js",
     "client": "webpack-dev-server --mode development --devtool inline-source-map --hot",
