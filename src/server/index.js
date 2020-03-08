@@ -1,16 +1,14 @@
-const express = require('express');
-const { getIp } = require('./utils');
+const express = require('express')
+const bodyParser = require('body-parser')
+require('dotenv/config')
+const router = require('./routes')
+const database = require('./db/database')
+const app = express()
 
-const app = express();
+database.connect()
 
-app.use(express.static('dist'));
-app.get('/api/info', 
-        (req, res) =>{
-                console.log(`/api/info ${getIp()}`);
-                return res.send({ 
-                        ip: getIp() 
-                });
-        })
+app.use(bodyParser.json())
+app.use(router)
 
 const port = process.env.PORT || 8081;
 app.listen(port, 
