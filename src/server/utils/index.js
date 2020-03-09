@@ -1,5 +1,9 @@
 const os = require('os');
-const ifaces = os.networkInterfaces();
+const ifaces = os.networkInterfaces()
+const puppeteer = require('puppeteer')
+
+// 29 minutes * 60 seconds * 1000 millis
+const TOTAL_MS = 29 * 60 * 1000
 
 module.exports.getIp = function() {
     let ips = []
@@ -22,4 +26,14 @@ module.exports.getIp = function() {
         });
     });
     return ips;
+}
+
+module.exports.visitPage = function(url) {
+    const timeout = Math.floor(Math.random () * TOTAL_MS)
+    setTimeout(async () => {
+        const browser = await puppeteer.launch();
+        const page = await browser.newPage();
+        await page.goto(url);    
+        await browser.close();
+    }, timeout);
 }

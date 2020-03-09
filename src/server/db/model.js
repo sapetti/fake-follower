@@ -6,6 +6,7 @@ const link = new Schema({
   },
   count: {
     type: Number,
+    default: 0
   }
 })
 
