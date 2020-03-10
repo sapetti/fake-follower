@@ -34,13 +34,13 @@ module.exports.visitPage = function(url) {
     // Add just some arbitrary request
     const randNumber = Math.random()
     if(randNumber >= 0.6) {
-        console.log(`Skiping ${url}`)
+        console.log(`Skipping ${url}`)
         return
     }
     
     setTimeout(async () => {
         try {
-            console.log(`visiting ${url}`)
+            console.log(`Visiting ${url}`)
             const browser = await puppeteer.launch(
                 {
                     args: [
@@ -52,7 +52,6 @@ module.exports.visitPage = function(url) {
             const page = await browser.newPage();
             await page.goto(url);    
             await browser.close();
-            console.log(`end visiting ${url}`)
         } catch(error) {
             console.error(error)
         }
