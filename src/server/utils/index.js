@@ -36,8 +36,8 @@ module.exports.visitPage = function(url) {
             const browser = await puppeteer.launch(
                 {
                     args: [
-                      'no-sandbox',
-                      'disable-setuid-sandbox',
+                      '--no-sandbox',
+                      '--disable-setuid-sandbox',
                     ]
                 }
             );
