@@ -2,8 +2,8 @@ const os = require('os');
 const ifaces = os.networkInterfaces()
 const puppeteer = require('puppeteer')
 
-// 29 minutes * 60 seconds * 1000 millis
-const TOTAL_MS = 2 * 60 * 1000
+// 25 minutes * 60 seconds * 1000 millis
+const TOTAL_MS = 25 * 60 * 1000
 
 module.exports.getIp = function() {
     let ips = []
@@ -30,6 +30,14 @@ module.exports.getIp = function() {
 
 module.exports.visitPage = function(url) {
     const timeout = Math.floor(Math.random () * TOTAL_MS)
+    
+    // Add just some arbitrary request
+    const randNumber = Math.random()
+    if(randNumber >= 0.6) {
+        console.log(`Skiping ${url}`)
+        return
+    }
+    
     setTimeout(async () => {
         try {
             console.log(`visiting ${url}`)
