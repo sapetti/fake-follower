@@ -3,7 +3,7 @@ const ifaces = os.networkInterfaces()
 const puppeteer = require('puppeteer')
 
 // 29 minutes * 60 seconds * 1000 millis
-const TOTAL_MS = 29 * 60 * 1000
+const TOTAL_MS = 2 * 60 * 1000
 
 module.exports.getIp = function() {
     let ips = []
