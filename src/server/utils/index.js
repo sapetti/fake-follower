@@ -31,9 +31,15 @@ module.exports.getIp = function() {
 module.exports.visitPage = function(url) {
     const timeout = Math.floor(Math.random () * TOTAL_MS)
     setTimeout(async () => {
-        const browser = await puppeteer.launch();
-        const page = await browser.newPage();
-        await page.goto(url);    
-        await browser.close();
+        try {
+            console.log(`visiting ${url}`)
+            const browser = await puppeteer.launch();
+            const page = await browser.newPage();
+            await page.goto(url);    
+            await browser.close();
+            console.log(`end visiting ${url}`)
+        } catch(error) {
+            console.error(error)
+        }
     }, timeout);
 }
